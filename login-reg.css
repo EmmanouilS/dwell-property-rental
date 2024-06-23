@@ -1,0 +1,61 @@
+/* Login/Register Styles */
+.auth-section {
+  padding: 2rem 0;
+}
+
+.auth-forms {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form-container {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  margin: 1rem 0;
+}
+
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #ffcc00;
+  color: #333;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: #e6b800;
+}
+
+#show-register-form {
+    color: #e6b800; /* Light yellow color */
+    text-decoration: underline; /* Underline */
+}
+
+#show-login-form {
+    color: #e6b800; /* Light yellow color */
+    text-decoration: underline; /* Underline */
+}
