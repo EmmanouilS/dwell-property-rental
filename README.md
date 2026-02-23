@@ -2,9 +2,9 @@
 
 > A full-stack web application for viewing, booking, and managing real estate properties.
 
-![Dwell Feed Screenshot]screenshots/feed.png
-![Dwell Login Screenshot]screenshots/login.png
-![Dwell Create Listing Screenshot]screenshots/create_listing.png
+![Dwell Feed Screenshot](screenshots/feed.png)
+![Dwell Login Screenshot](screenshots/login.png)
+![Dwell Create Listing Screenshot](screenshots/create_listing.png)
 ## 📖 About The Project
 "Dwell" is a property rental platform developed as part of the **Web and Mobile Information Systems** course at the University of Piraeus. It simulates a marketplace where users can explore property listings, register/login, book properties for specific dates, and even create their own property listings.
 
