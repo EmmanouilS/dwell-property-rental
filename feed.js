@@ -1,13 +1,36 @@
 document.addEventListener("DOMContentLoaded", function () {
+    // bail out if authentication check hasn't run yet
     if (typeof window.isLoggedIn === 'undefined') return;
 
-    // Fetch properties from the server
-    fetch('feed.php?action=fetch_properties')
-        .then(response => response.json())
-        .then(properties => {
-            const propertiesContainer = document.querySelector(".properties");
+    const propertiesContainer = document.querySelector(".properties");
 
-            if (properties.length === 0) {
+    // Immediately warn when the page is opened via file://
+    if (window.location.protocol === 'file:') {
+        console.error('feed.html is being opened with file:// protocol, fetch requests will fail.');
+        propertiesContainer.innerHTML =
+            "<p>Please serve this page over HTTP (e.g. using localhost) so that the PHP backend can be reached.</p>";
+        return;
+    }
+
+    // Fetch properties from the server
+    const apiUrl = 'feed.php?action=fetch_properties';
+    fetch(apiUrl)
+        .then(response => {
+            if (!response.ok) {
+                // non-2xx status codes will be treated as an error
+                throw new Error(`Server returned ${response.status} ${response.statusText}`);
+            }
+            return response.json();
+        })
+        .then(properties => {
+            // server may return an error payload instead of an array
+            if (properties && typeof properties === 'object' && properties.error) {
+                console.error('Server reported error:', properties.error);
+                propertiesContainer.innerHTML = `<p>Server error: ${properties.error}</p>`;
+                return;
+            }
+
+            if (!Array.isArray(properties) || properties.length === 0) {
                 propertiesContainer.innerHTML = "<p>No properties found.</p>";
                 return;
             }
@@ -18,8 +41,7 @@ document.addEventListener("DOMContentLoaded", function () {
         })
         .catch(error => {
             console.error("Error fetching properties:", error);
-            const propertiesContainer = document.querySelector(".properties");
-            propertiesContainer.innerHTML = "<p>Failed to fetch properties. Please try again later.</p>";
+            propertiesContainer.innerHTML = "<p>Failed to fetch properties. Please make sure your local server is running, your database credentials are correct, and the feed.php endpoint is accessible.</p>";
         });
 });
 

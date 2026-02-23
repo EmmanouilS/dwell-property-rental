@@ -2,8 +2,9 @@
 
 > A full-stack web application for viewing, booking, and managing real estate properties.
 
-![Dwell Feed Screenshot](https://via.placeholder.com/800x400?text=Screenshot+Coming+Soon)
-
+![Dwell Feed Screenshot]screenshots/feed.png
+![Dwell Login Screenshot]screenshots/login.png
+![Dwell Create Listing Screenshot]screenshots/create_listing.png
 ## 📖 About The Project
 "Dwell" is a property rental platform developed as part of the **Web and Mobile Information Systems** course at the University of Piraeus. It simulates a marketplace where users can explore property listings, register/login, book properties for specific dates, and even create their own property listings.
 
@@ -22,6 +23,13 @@
 ## 🚀 How to Run Locally
 1. Clone the repository.
 2. Move the project folder to your local server's root directory (e.g., `C:\xampp\htdocs\dwell`).
-3. Import the `.sql` file into your MySQL database via phpMyAdmin.
-4. Update `config.php` with your database credentials.
-5. Open your browser and navigate to `http://localhost/dwell/feed.html`.
+3. Import the `.sql` file into your MySQL database via phpMyAdmin (or any MySQL tool).
+4. Update `config.php` with your database credentials (hostname, username, password, database name).
+   - If the database has been moved to another machine or port, make sure to update those values as well.
+
+5. **Run the application through a web server that supports PHP**. You can use:
+   - A local stack such as **XAMPP, WAMP, Laragon** on Windows, or
+   - PHP's built‑in server (`php -S localhost:8000` from the project root) after installing PHP.
+   Opening `feed.html` directly with the `file://` protocol will always fail with "Failed to fetch properties."  
+
+6. In your browser go to `http://localhost/dwell/feed.html` (adjust path/port according to your setup).
